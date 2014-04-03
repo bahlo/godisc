@@ -1,4 +1,5 @@
 passport = require 'passport'
+config = (require 'cson').parseFileSync 'config.cson'
 Account = require './models/account'
 
 module.exports = (app) ->
@@ -6,16 +7,24 @@ module.exports = (app) ->
     res.render 'index', user : req.user
 
   app.get '/register', (req, res) ->
-    res.render 'register', user: req.user
+    if config?.registration is false
+      res.render 'register',
+        user: req.user
+        err: 'Registrierung ist vorerst geschlossen!'
+    else
+      res.render 'register', user: req.user
 
   app.post '/register', (req, res) ->
-    Account.register (new Account username : req.body.username )
-    , req.body.password, (err, account) ->
-      if err?
-        return res.render('register', { account : account });
+    if config?.registration is false
+      res.redirect '/register'
+    else
+      Account.register (new Account username : req.body.username )
+      , req.body.password, (err, account) ->
+        if err?
+          return res.render('register', { account : account });
 
-      (passport.authenticate 'local') req, res, ->
-        res.redirect '/'
+        (passport.authenticate 'local') req, res, ->
+          res.redirect '/'
 
   app.get '/login', (req, res) ->
     res.render 'login', user : req.user

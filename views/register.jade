@@ -2,7 +2,10 @@ extends layout
 
 block content
   h1 Registrieren
-  form(action="/register", method="post")
-    input(type="text", name="username", placeholder="Name", required)
-    input(type="password", name="password", placeholder="Passwort", required)
-    input(type="submit", value="Login")
+  if err
+    span #{err}
+  else
+    form(action="/register", method="post")
+      input(type="text", name="username", placeholder="Name", required)
+      input(type="password", name="password", placeholder="Passwort", required)
+      input(type="submit", value="Login")
