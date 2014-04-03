@@ -70,15 +70,11 @@ module.exports = (app) ->
         thread: thread
 
   app.get '/thread/:threadId/remove', loggedIn, (req, res) ->
-    Thread.findById req.params.threadId, (err, thread) ->
-      # Define callback do keep it DRY
-      callback = (err, thread) ->
-        res.redirect "/"
-
-      if thread.creator.toString() is req.user._id.toString()
-        thread.remove callback
-      else
-        callback null, thread
+    Thread.findOneAndRemove
+       _id: req.params.threadId
+       creator: req.user._id
+    , (err, thread) ->
+      res.redirect "/"
 
   # Posts
   app.post '/thread/:threadId/post/new', loggedIn, (req, res) ->
@@ -95,12 +91,8 @@ module.exports = (app) ->
         res.redirect "/thread/#{thread.id}"
 
   app.get '/thread/:threadId/post/:postId/remove', loggedIn, (req, res) ->
-    Post.findById req.params.postId, (err, post) ->
-      # Define callback do keep it DRY
-      callback = (err, post) ->
-        res.redirect "/thread/#{req.params.threadId}"
-
-      if post.author.toString() is req.user._id.toString()
-        post.remove callback
-      else
-        callback null, post
+    Post.findOneAndRemove
+       _id: req.params.postId
+       author: req.user._id
+    , (err, thread) ->
+      res.redirect "/thread/#{req.params.threadId}"
