@@ -4,6 +4,7 @@ passportLocalMongoose = require 'passport-local-mongoose'
 
 accountSchema = new Schema
   email: String
+  picture: String
 
 accountSchema.plugin passportLocalMongoose
 
