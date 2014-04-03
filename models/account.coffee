@@ -1,10 +1,10 @@
-mongoose = require('mongoose')
+mongoose = require 'mongoose'
 Schema = mongoose.Schema
 passportLocalMongoose = require 'passport-local-mongoose'
 
-Account = new Schema
+accountSchema = new Schema
   email: String
 
-Account.plugin passportLocalMongoose
+accountSchema.plugin passportLocalMongoose
 
-module.exports = mongoose.model 'Account', Account
+module.exports = mongoose.model 'Account', accountSchema
