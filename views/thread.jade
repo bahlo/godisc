@@ -3,4 +3,12 @@ extends layout
 block content
   h1= thread.topic
   h3 Erstellt von #{thread.creator.username}
+
+  each post in thread.posts
+    p= post.body
+
+  form(action="/thread/#{thread._id}/post/new", method="post")
+    textarea(name="body", placeholder="Neue Nachricht")
+    input(type="submit", value="Abschicken")
+
   pre #{thread}

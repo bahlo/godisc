@@ -2,6 +2,7 @@ passport = require 'passport'
 config = (require 'cson').parseFileSync 'config.cson'
 Account = require './models/account'
 Thread = require './models/thread'
+Post = require './models/post'
 
 # Custom middleware to check if logged in
 loggedIn = (req, res, next) ->
@@ -63,7 +64,20 @@ module.exports = (app) ->
       res.redirect "/thread/#{thread.id}"
 
   app.get '/thread/:id', loggedIn, (req, res) ->
-    ((Thread.findOne id: req.query.id).populate 'creator').exec (err, thread) ->
+    ((Thread.findById req.params.id).populate ['creator', 'posts']).exec (err, thread) ->
       res.render 'thread',
         user: req.user
         thread: thread
+
+  app.post '/thread/:id/post/new', loggedIn, (req, res) ->
+    if req.body.body?
+      Thread.findById req.params.id, (err, thread) ->
+        post = new Post
+          body: req.body.body
+          author: req.user
+        post.save()
+
+        thread.posts.push post
+        thread.save()
+
+        res.redirect "/thread/#{thread.id}"
