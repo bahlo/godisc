@@ -1,9 +1,8 @@
 # OS X
 .DS_Store
 
-# Compiled js
-routes/**/*.js
-app.js
+# Compiled css
+public/stylesheets/style.css
 
 # NPM
 node_modules/
