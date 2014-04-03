@@ -1,11 +1,25 @@
 passport = require 'passport'
 config = (require 'cson').parseFileSync 'config.cson'
 Account = require './models/account'
+Thread = require './models/thread'
+
+# Custom middleware to check if logged in
+loggedIn = (req, res, next) ->
+  if req.user
+    next()
+  else
+    res.redirect '/login'
+
 
 module.exports = (app) ->
+  # Dashboard
   app.get '/', (req, res) ->
-    res.render 'index', user : req.user
+    ((Thread.find()).populate 'creator').exec (err, threads) ->
+      res.render 'index',
+        user: req.user
+        threads: threads
 
+  # User stuff
   app.get '/register', (req, res) ->
     if config?.registration is false
       res.render 'register',
@@ -18,16 +32,16 @@ module.exports = (app) ->
     if config?.registration is false
       res.redirect '/register'
     else
-      Account.register (new Account username : req.body.username )
+      Account.register (new Account username: req.body.username )
       , req.body.password, (err, account) ->
         if err?
-          return res.render('register', { account : account });
+          return res.render 'register', account: account
 
         (passport.authenticate 'local') req, res, ->
           res.redirect '/'
 
   app.get '/login', (req, res) ->
-    res.render 'login', user : req.user
+    res.render 'login', user: req.user
 
   app.post '/login', (passport.authenticate 'local'), (req, res) ->
     res.redirect '/'
@@ -35,3 +49,21 @@ module.exports = (app) ->
   app.get '/logout', (req, res) ->
     req.logout()
     res.redirect '/'
+
+  # Thread
+  app.get '/thread/new', loggedIn, (req, res) ->
+    res.render 'thread_new', user: req.user
+
+  app.post '/thread/new', loggedIn, (req, res) ->
+    if req.body.topic? and req.user?
+      thread = new Thread
+        topic: req.body.topic
+        creator: req.user._id
+      thread.save()
+      res.redirect "/thread/#{thread.id}"
+
+  app.get '/thread/:id', loggedIn, (req, res) ->
+    ((Thread.findOne id: req.query.id).populate 'creator').exec (err, thread) ->
+      res.render 'thread',
+        user: req.user
+        thread: thread

@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Neues Thema
+  form(action="/thread/new", method="post")
+    input(name="topic", placeholder="Titel")
+    input(type="submit", value="Erstellen")

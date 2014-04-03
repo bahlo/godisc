@@ -1,7 +1,7 @@
 mongoose = require 'mongoose'
 Schema = mongoose.Schema
-Account = require './account'
 Post = require './post'
+Account = require './account'
 
 threadSchema = new Schema
   topic: String
@@ -9,10 +9,10 @@ threadSchema = new Schema
     type: Date,
     default: Date.now
   creator:
-    type: ObjectID,
+    type: Schema.Types.ObjectId,
     ref: 'Account'
   posts: [
-    type: ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Post'
   ]
 

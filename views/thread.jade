@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  h1= thread.topic
+  h3 Erstellt von #{thread.creator.username}
+  pre #{thread}
