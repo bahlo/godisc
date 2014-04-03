@@ -8,6 +8,7 @@ block content
   if (user)
     p You are currently logged in as #{user.username}
     a(href="/thread/new") Neues Thema
+    br
     a(href="/logout") Logout
     h2 Themen
     each thread in threads

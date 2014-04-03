@@ -69,9 +69,14 @@ module.exports = (app) ->
         user: req.user
         thread: thread
 
-  app.post '/thread/:id/post/new', loggedIn, (req, res) ->
+  app.get '/thread/:threadId/remove', loggedIn, (req, res) ->
+    Thread.findByIdAndRemove req.params.threadId, (err) ->
+      res.redirect "/"
+
+  # Posts
+  app.post '/thread/:threadId/post/new', loggedIn, (req, res) ->
     if req.body.body?
-      Thread.findById req.params.id, (err, thread) ->
+      Thread.findById req.params.threadId, (err, thread) ->
         post = new Post
           body: req.body.body
           author: req.user
@@ -81,3 +86,7 @@ module.exports = (app) ->
         thread.save()
 
         res.redirect "/thread/#{thread.id}"
+
+  app.get '/thread/:threadId/post/:postId/remove', loggedIn, (req, res) ->
+    Post.findByIdAndRemove req.params.postId, (err) ->
+      res.redirect "/thread/#{req.params.threadId}"
