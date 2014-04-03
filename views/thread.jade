@@ -7,8 +7,8 @@ block content
       a(href="/thread/#{thread._id}/remove") x
   h3 Erstellt von #{thread.creator.username} am #{moment(thread.created).format('DD.MM.YYYY')}
 
-  each post in thread.posts
-    h2 #{user.username} schrieb am #{moment(post.created).format('DD.MM.YYYY')}:
+  each post in posts
+    h2 #{post.author.username} schrieb am #{moment(post.created).format('DD.MM.YYYY')}:
       if user._id.toString() == post.author.toString()
         a(href="/thread/#{thread._id}/post/#{post._id}/remove") x
     p= post.body

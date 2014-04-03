@@ -1,4 +1,5 @@
 passport = require 'passport'
+async = require 'async'
 config = (require 'cson').parseFileSync 'config.cson'
 Account = require './models/account'
 Thread = require './models/thread'
@@ -65,9 +66,16 @@ module.exports = (app) ->
 
   app.get '/thread/:id', loggedIn, (req, res) ->
     ((Thread.findById req.params.id).populate ['creator', 'posts']).exec (err, thread) ->
-      res.render 'thread',
-        user: req.user
-        thread: thread
+      # Just think of it as
+      # thread.posts.populate 'author', (err, posts) ->
+      # https://github.com/LearnBoost/mongoose/issues/601
+      async.map thread.posts, (post, done) ->
+        post.populate 'author', done
+      , (err, posts) ->
+        res.render 'thread',
+          user: req.user
+          thread: thread
+          posts: posts
 
   app.get '/thread/:threadId/remove', loggedIn, (req, res) ->
     Thread.findOneAndRemove
