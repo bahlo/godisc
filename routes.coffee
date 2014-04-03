@@ -26,6 +26,3 @@ module.exports = (app) ->
   app.get '/logout', (req, res) ->
     req.logout()
     res.redirect '/'
-
-  app.get '/ping', (req, res) ->
-    res.send "pong!", 200
