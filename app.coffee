@@ -35,7 +35,7 @@ passport.serializeUser Account.serializeUser()
 passport.deserializeUser Account.deserializeUser()
 
 # Mongoose
-mongoose.connect 'mongodb://localhost/passport_local_mongoose'
+mongoose.connect 'mongodb://localhost/disc'
 
 # Routing
 routes app
