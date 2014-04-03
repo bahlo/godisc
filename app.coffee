@@ -4,6 +4,7 @@ express = require 'express'
 mongoose = require 'mongoose'
 passport = require 'passport'
 LocalStrategy = (require 'passport-local').Strategy
+moment = require 'moment'
 
 Account = require './models/account'
 routes = require './routes'
@@ -28,6 +29,9 @@ app.use express.static path.join __dirname, 'public'
 
 if 'development' is app.get 'env'
   app.use express.errorHandler()
+
+# Configure locals
+app.locals.moment = moment
 
 # Configure passport
 passport.use new LocalStrategy Account.authenticate()

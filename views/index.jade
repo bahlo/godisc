@@ -15,4 +15,4 @@ block content
       h1
         a(href="/thread/#{thread._id}")= thread.topic
         small= thread.creator.username
-        small= thread.created
+        small= moment(thread.created).format('DD.MM.YY')

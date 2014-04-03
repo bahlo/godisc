@@ -14,6 +14,7 @@
     "passport-local": "^1.0.0",
     "passport": "^0.2.0",
     "mongoose": "^3.8.8",
-    "cson": "^1.4.5"
+    "cson": "^1.4.5",
+    "moment": "^2.5.1"
   }
 }
