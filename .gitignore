@@ -13,3 +13,6 @@ data/
 
 # Bower
 public/vendor/
+
+# Uploaded data
+uploads/*.*

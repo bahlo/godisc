@@ -4,7 +4,7 @@ block content
   .page-header
     h1 Einstellungen
       small  #{user.username}
-  form.col-md-6.form-horizontal(action="/settings", method="post")
+  form.col-md-6.form-horizontal(action="/settings", method="post", enctype="multipart/form-data")
     .form-group
       label.control-label.col-sm-3(for="displayname") Anzeigename
       .col-sm-9
@@ -12,5 +12,5 @@ block content
     .form-group
       label.control-label.col-sm-3(for="picture") Profilbild:
       .col-sm-9
-        input(type="file")
+        input#picture(type="file", name="picture")
     input.btn.btn-default(type="submit", value="Speichern")
