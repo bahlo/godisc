@@ -2,8 +2,11 @@ nav.navbar.navbar-inverse.navbar-fixed-top
   .container
     .navbar-header
       a.navbar-brand(href="/")= config.title
-    ul.nav.navbar-nav
-      if user
+    if user
+      form.navbar-form.navbar-left
+        .form-group
+          input.form-control(type="text", placeholder="Suche", disabled)
+      ul.nav.navbar-nav
         li
           a(href="/") Themen
     ul.nav.navbar-nav.navbar-right
@@ -15,7 +18,3 @@ nav.navbar.navbar-inverse.navbar-fixed-top
       else
         li
           a(href="/login") Login
-    if user
-      form.navbar-form.navbar-right
-        .form-group
-          input.form-control(type="text", placeholder="Suche", disabled)
