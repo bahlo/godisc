@@ -1,3 +1,5 @@
+fs = require 'fs'
+path = require 'path'
 passport = require 'passport'
 async = require 'async'
 config = (require 'cson').parseFileSync 'config.cson'
@@ -56,9 +58,19 @@ module.exports = (app) ->
     res.render 'settings', user: req.user
 
   app.post '/settings', loggedIn, (req, res) ->
-    console.log req.files, req.body
-    req.user.update displayName: req.body.displayname, (err) ->
-      res.redirect '/settings'
+    saveUser = (data) ->
+      req.user.update data, (err) ->
+        res.redirect '/settings'
+
+    if picture = req.files?.picture
+      fs.readFile picture.path, (err, data) ->
+        newPath = path.resolve __dirname, "/public/uploads/#{picture.originalFilename}"
+        fs.writeFile newPath, data, (err) ->
+          saveUser
+            displayName: req.body.displayname
+            picture: "/uploads/#{picture.originalFilename}"
+    else
+      saveUser displayName: req.body.displayname
 
   # Thread
   app.get '/thread/new', loggedIn, (req, res) ->

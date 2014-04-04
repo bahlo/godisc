@@ -4,6 +4,8 @@ block content
   .page-header
     h1 Einstellungen
       small  #{user.username}
+  if user.picture
+    img.col-md-2.img-responsive.img-circle(src=user.picture)
   form.col-md-6.form-horizontal(action="/settings", method="post", enctype="multipart/form-data")
     .form-group
       label.control-label.col-sm-3(for="displayname") Anzeigename
