@@ -3,6 +3,7 @@ path = require 'path'
 express = require 'express'
 mongoose = require 'mongoose'
 passport = require 'passport'
+cson = require 'cson'
 LocalStrategy = (require 'passport-local').Strategy
 moment = require 'moment'
 
@@ -32,6 +33,7 @@ if 'development' is app.get 'env'
 
 # Configure locals
 app.locals.moment = moment
+app.locals.config = cson.parseFileSync 'config.cson'
 
 # Configure passport
 passport.use new LocalStrategy Account.authenticate()
