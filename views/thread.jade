@@ -3,7 +3,7 @@ extends layout
 block content
   .page-header
     h1= thread.topic
-      small  eröffnet am #{moment(thread.created).format('DD.MM.YYYY')} von #{thread.creator.username}
+      small  eröffnet am #{moment(thread.created).format('DD.MM.YYYY')} von #{thread.creator.displayName || thread.creator.username}
       if user._id.toString() == thread.creator._id.toString()
         a.close(href="/thread/#{thread._id}/remove") &times;
 
@@ -14,7 +14,7 @@ block content
           img.img-circle(src="https://avatars0.githubusercontent.com/u/1725839?s=460", height="64", width="auto")
       .col-sm-11
         .panel.panel-default
-          .panel-heading #{post.author.username} schrieb am #{moment(post.created).format('DD.MM.YYYY [um] hh:mm')}:
+          .panel-heading #{post.author.displayName || post.author.username} schrieb am #{moment(post.created).format('DD.MM.YYYY [um] hh:mm')}:
             if user._id.toString() == post.author._id.toString()
               a.close(href="/thread/#{thread._id}/post/#{post._id}/remove") &times;
           .panel-body= post.body

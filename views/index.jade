@@ -6,4 +6,4 @@ block content
   each thread in threads
     h1
       a(href="/thread/#{thread._id}")= thread.topic
-      small  von #{thread.creator.username} am #{moment(thread.created).format('DD.MM.YY')}
+      small  von #{thread.creator.displayName || thread.creator.username} am #{moment(thread.created).format('DD.MM.YY')}

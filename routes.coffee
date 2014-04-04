@@ -55,6 +55,10 @@ module.exports = (app) ->
   app.get '/settings', loggedIn, (req, res) ->
     res.render 'settings', user: req.user
 
+  app.post '/settings', loggedIn, (req, res) ->
+    req.user.update displayName: req.body.displayname, (err) ->
+      res.redirect '/settings'
+
   # Thread
   app.get '/thread/new', loggedIn, (req, res) ->
     res.render 'thread_new', user: req.user
