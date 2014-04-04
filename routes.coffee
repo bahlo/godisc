@@ -60,11 +60,13 @@ module.exports = (app) ->
   app.post '/settings', loggedIn, (req, res) ->
     saveUser = (data) ->
       req.user.update data, (err) ->
+        req.user.save()
         res.redirect '/settings'
 
     if picture = req.files?.picture
       fs.readFile picture.path, (err, data) ->
-        newPath = path.resolve __dirname, "/public/uploads/#{picture.originalFilename}"
+        newPath = "#{__dirname}/public/uploads/#{picture.originalFilename}"
+        console.log "Writing to #{newPath}"
         fs.writeFile newPath, data, (err) ->
           saveUser
             displayName: req.body.displayname
