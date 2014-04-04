@@ -2,7 +2,8 @@ extends layout
 
 block content
   .page-header
-    h1 Themen
+    h1 Themen&nbsp;
+      a.btn.btn-success(href="/thread/new") Neu
   each thread in threads
     h1
       a(href="/thread/#{thread._id}")= thread.topic

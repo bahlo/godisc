@@ -5,7 +5,7 @@ block content
     h1= thread.topic
       small  eröffnet am #{moment(thread.created).format('DD.MM.YYYY')} von #{thread.creator.displayName || thread.creator.username}
       if user._id.toString() == thread.creator._id.toString()
-        a.close(href="/thread/#{thread._id}/remove") &times;
+        a.close(href="/thread/#{thread._id}/remove", style="line-height:2") &times;
 
   each post in posts
     .row
