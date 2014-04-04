@@ -56,6 +56,7 @@ module.exports = (app) ->
     res.render 'settings', user: req.user
 
   app.post '/settings', loggedIn, (req, res) ->
+    console.log req.files, req.body
     req.user.update displayName: req.body.displayname, (err) ->
       res.redirect '/settings'
 
@@ -75,7 +76,7 @@ module.exports = (app) ->
     ((Thread.findById req.params.id).populate ['creator', 'posts']).exec (err, thread) ->
       # Just think of it as
       # thread.posts.populate 'author', (err, posts) ->
-      # https://github.com/LearnBoost/mongoose/issues/601
+      # More info at https://github.com/LearnBoost/mongoose/issues/601
       async.map thread.posts, (post, done) ->
         post.populate 'author', done
       , (err, posts) ->
