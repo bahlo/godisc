@@ -3,9 +3,9 @@ path = require 'path'
 express = require 'express'
 mongoose = require 'mongoose'
 passport = require 'passport'
-cson = require 'cson'
-LocalStrategy = (require 'passport-local').Strategy
 moment = require 'moment'
+config = (require 'cson').parseFileSync 'config.cson'
+LocalStrategy = (require 'passport-local').Strategy
 
 Account = require './models/account'
 routes = require './routes'
@@ -34,7 +34,7 @@ if 'development' is app.get 'env'
 
 # Configure locals
 app.locals.moment = moment
-app.locals.config = cson.parseFileSync 'config.cson'
+app.locals.config = config
 
 # Configure passport
 passport.use new LocalStrategy Account.authenticate()
@@ -42,7 +42,7 @@ passport.serializeUser Account.serializeUser()
 passport.deserializeUser Account.deserializeUser()
 
 # Mongoose
-mongoose.connect 'mongodb://localhost/disc'
+mongoose.connect config.mongoUrl
 
 # Routing
 routes app
