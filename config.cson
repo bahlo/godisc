@@ -1,5 +1,4 @@
 {
   title: 'Disc'
   registration: false
-  mongoUrl: 'mongodb://localhost/disc'
 }
