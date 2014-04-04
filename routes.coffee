@@ -79,12 +79,13 @@ module.exports = (app) ->
     res.render 'thread_new', user: req.user
 
   app.post '/thread/new', loggedIn, (req, res) ->
-    if req.body.topic? and req.user?
+    if req.body.topic?.length > 0 and req.user?
       thread = new Thread
         topic: req.body.topic
         creator: req.user._id
       thread.save()
       res.redirect "/thread/#{thread.id}"
+    else res.redirect 'back'
 
   app.get '/thread/:id', loggedIn, (req, res) ->
     ((Thread.findById req.params.id).populate ['creator', 'posts']).exec (err, thread) ->
@@ -108,7 +109,7 @@ module.exports = (app) ->
 
   # Posts
   app.post '/thread/:threadId/post/new', loggedIn, (req, res) ->
-    if req.body.body?
+    if req.body.body?.length > 0
       Thread.findById req.params.threadId, (err, thread) ->
         post = new Post
           body: req.body.body
@@ -119,6 +120,7 @@ module.exports = (app) ->
         thread.save()
 
         res.redirect "/thread/#{thread.id}"
+    else res.redirect "/thread/#{thread.id}"
 
   app.get '/thread/:threadId/post/:postId/remove', loggedIn, (req, res) ->
     Post.findOneAndRemove
