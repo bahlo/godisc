@@ -11,7 +11,7 @@ block content
     .row
       if user._id.toString() != post.author._id.toString()
         .col-sm-1
-          img.img-circle(src="https://avatars0.githubusercontent.com/u/1725839?s=460", height="64", width="auto")
+          img.img-circle(src=post.author.picture, height="64", width="auto")
       .col-sm-11
         .panel.panel-default
           .panel-heading #{post.author.displayName || post.author.username} schrieb am #{moment(post.created).format('DD.MM.YYYY [um] hh:mm')}:
@@ -20,7 +20,7 @@ block content
           .panel-body= post.body
       if user._id.toString() == post.author._id.toString()
         .col-sm-1
-          img.img-circle(src="https://avatars0.githubusercontent.com/u/1725839?s=460", height="64", width="auto")
+          img.img-circle(src=post.author.picture, height="64", width="auto")
 
   h1 Neuen Kommentar abgeben
   form(action="/thread/#{thread._id}/post/new", method="post")
