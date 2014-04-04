@@ -1,18 +1,14 @@
 extends layout
 
 block content
-  if (!user)
+  if !user
     a(href="/login") Login
     br
     a(href="/register") Register
-  if (user)
-    p You are currently logged in as #{user.username}
-    a(href="/thread/new") Neues Thema
-    br
-    a(href="/logout") Logout
-    h2 Themen
+  if user
+    .page-header
+      h1 Themen
     each thread in threads
       h1
         a(href="/thread/#{thread._id}")= thread.topic
-        small= thread.creator.username
-        small= moment(thread.created).format('DD.MM.YY')
+        small  von #{thread.creator.username} am #{moment(thread.created).format('DD.MM.YY')}

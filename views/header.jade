@@ -1,0 +1,20 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      a.navbar-brand(href="/") Disc
+    ul.nav.navbar-nav
+      if user
+        li
+          a(href="/") Themen
+        li
+          a(href="/thread/new") Neu
+    ul.nav.navbar-nav.navbar-right
+      li
+        if user
+          a(href="/logout") Logout
+        else
+          a(href="/login") Login
+    if user
+      form.navbar-form.navbar-right
+        .form-group
+          input.form-control(type="text", placeholder="Suche")
