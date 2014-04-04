@@ -9,10 +9,13 @@ nav.navbar.navbar-default.navbar-fixed-top
         li
           a(href="/thread/new") Neu
     ul.nav.navbar-nav.navbar-right
-      li
-        if user
+      if user
+        li
+          a(href="/settings") Einstellungen
+        li
           a(href="/logout") Logout
-        else
+      else
+        li
           a(href="/login") Login
     if user
       form.navbar-form.navbar-right

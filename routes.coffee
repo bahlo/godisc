@@ -52,6 +52,9 @@ module.exports = (app) ->
     req.logout()
     res.redirect '/'
 
+  app.get '/settings', loggedIn, (req, res) ->
+    res.render 'settings', user: req.user
+
   # Thread
   app.get '/thread/new', loggedIn, (req, res) ->
     res.render 'thread_new', user: req.user

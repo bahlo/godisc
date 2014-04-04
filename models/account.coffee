@@ -3,7 +3,7 @@ Schema = mongoose.Schema
 passportLocalMongoose = require 'passport-local-mongoose'
 
 accountSchema = new Schema
-  email: String
+  displayName: String
   picture: String
 
 accountSchema.plugin passportLocalMongoose
