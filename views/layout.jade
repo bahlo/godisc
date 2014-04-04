@@ -7,4 +7,6 @@ html
   body
     include header
     .container
+      if err
+        .alert.alert-warning= err
       block content
