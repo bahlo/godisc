@@ -15,7 +15,7 @@ loggedIn = (req, res, next) ->
 
 module.exports = (app) ->
   # Dashboard
-  app.get '/', (req, res) ->
+  app.get '/', loggedIn, (req, res) ->
     ((Thread.find()).populate 'creator').exec (err, threads) ->
       res.render 'index',
         user: req.user

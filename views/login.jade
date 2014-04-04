@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h1 Login
+  .page-header
+    h1 Login
   form.col-md-6.form-horizontal(action="/login", method="post")
     .form-group
       label.control-label.col-sm-3(for="username") Benutzername
