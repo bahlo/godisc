@@ -22,9 +22,10 @@ block content
         .col-sm-1
           img.img-circle(src=post.author.picture, height="64", width="auto")
 
-  h1 Neuen Kommentar abgeben
-  form(action="/thread/#{thread._id}/post/new", method="post")
-    textarea.form-control(name="body", placeholder="Neue Nachricht")
-    input.btn.btn-default(type="submit", value="Abschicken")
+  hr
 
-  // pre #{thread}
+  .col-md-8.col-md-offset-2(style="margin-bottom:32px")
+    h3 Neuen Kommentar abgeben
+    form(action="/thread/#{thread._id}/post/new", method="post")
+      textarea.form-control(name="body", placeholder="Neue Nachricht", rows="4", style="margin-bottom:12px")
+      input.btn.btn-success.pull-right(type="submit", value="Abschicken")
