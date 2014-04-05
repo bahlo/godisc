@@ -1,8 +1,26 @@
 # nodisc
 
-A _small_ forum in node.js
+A lightweight forum in node (WIP, unstable)
 
-## Install
+## Goal
+
+> Forums are so bloated today, I just want a self-hosted Facebook group.
+
+I've heard people say that - and found not one good, open-soure, small and
+easy-to-install forum, so I'm building one.
+
+## Technologie
+
+It's built completly in [CoffeeScript](http://coffeescript.org/) upon the
+[Express](http://expressjs.com/) framework for [node.js](http://nodejs.org).
+
+## Roadmap
+* Crop-functionality for profile pictures
+* A WYSIWYG, I'm tending to use [scribe](https://github.com/guardian/scribe)
+* An _own_ layout
+* Proper error handling
+
+## Installation
 ### Requirements
 
 You'll need [node.js](http://nodejs.org) with [npm](http://npmjs.org) and
