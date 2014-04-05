@@ -1,5 +1,5 @@
 {
   title: 'Disc'
-  registration: false
-  dbUrl: 'mongodb://localhost/disc'
+  registration: true
+  dbUrl: 'mongodb://localhost/nodisc'
 }
