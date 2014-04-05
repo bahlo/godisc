@@ -15,8 +15,9 @@ It's built completly in [CoffeeScript](http://coffeescript.org/) upon the
 [Express](http://expressjs.com/) framework for [node.js](http://nodejs.org).
 
 ## Roadmap
-* Crop-functionality for profile pictures
+* Translations
 * A WYSIWYG, I'm tending to use [scribe](https://github.com/guardian/scribe)
+* Crop-functionality for profile pictures
 * An _own_ layout
 * Proper error handling
 

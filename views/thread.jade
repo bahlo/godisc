@@ -3,7 +3,8 @@ extends layout
 block content
   .page-header
     h1= thread.topic
-      small  eröffnet am #{moment(thread.created).format('DD.MM.YYYY')} von #{thread.creator.displayName || thread.creator.username}
+      small  opened at #{moment(thread.created).format('YYYY-MM-DD')}
+        | from #{thread.creator.displayName || thread.creator.username}
       if user._id.toString() == thread.creator._id.toString()
         a.close(href="/thread/#{thread._id}/remove", style="line-height:2") &times;
 
@@ -14,7 +15,8 @@ block content
           img.img-circle(src=post.author.picture, height="64", width="auto")
       .col-sm-11
         .panel.panel-default
-          .panel-heading #{post.author.displayName || post.author.username} schrieb am #{moment(post.created).format('DD.MM.YYYY [um] hh:mm')}:
+          .panel-heading #{post.author.displayName || post.author.username} wrote
+            | at #{moment(post.created).format('YYYY-MM-DD hh:mm')}:
             if user._id.toString() == post.author._id.toString()
               a.close(href="/thread/#{thread._id}/post/#{post._id}/remove") &times;
           .panel-body= post.body
@@ -25,7 +27,7 @@ block content
   hr
 
   .col-md-8.col-md-offset-2(style="margin-bottom:32px")
-    h3 Neuen Kommentar abgeben
+    h3 New Post
     form(action="/thread/#{thread._id}/post/new", method="post")
-      textarea.form-control(name="body", placeholder="Neue Nachricht", rows="4", style="margin-bottom:12px")
-      input.btn.btn-success.pull-right(type="submit", value="Abschicken")
+      textarea.form-control(name="body", placeholder="Your message", rows="4", style="margin-bottom:12px")
+      input.btn.btn-success.pull-right(type="submit", value="Post")
