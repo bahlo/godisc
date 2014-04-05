@@ -41,21 +41,7 @@ passport.use new LocalStrategy Account.authenticate()
 passport.serializeUser Account.serializeUser()
 passport.deserializeUser Account.deserializeUser()
 
-# Mongoose
-buildMongoUrl = ->
-  mongoUrl = "mongodb://";
-  if process.env.MONGODB_USERNAME?
-    mongoUrl += process.env.MONGODB_USERNAME
-    if process.env.MONGODB_PASSWORD?
-      mongoUrl += ":#{process.env.MONGODB_PASSWORD}"
-  if process.env.MONGODB_USERNAME?
-    mongoUrl += "@"
-  mongoUrl += "#{process.env.MONGODB_URL}"
-  if process.env.MONGODB_PORT?
-    mongoUrl += ":#{process.env.MONGODB_PORT}"
-  mongoUrl += "/#{process.env.MONGODB_DATABASE}"
-
-mongoose.connect buildMongoUrl()
+mongoose.connect config.dbUrl
 
 # Routing
 routes app
