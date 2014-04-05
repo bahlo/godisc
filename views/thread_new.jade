@@ -2,10 +2,10 @@ extends layout
 
 block content
   .page-header
-    h1 Neues Thema
+    h1 New Thread
   form.col-md-6.form-horizontal(action="/thread/new", method="post")
     .form-group
-      label.control-label.col-sm-3(for="title") Titel
+      label.control-label.col-sm-3(for="title") Title
       .col-sm-9
-        input.form-control(name="topic", placeholder="Titel", id="title")
-    input.btn.btn-default(type="submit", value="Erstellen")
+        input.form-control(name="topic", placeholder="Title", id="title")
+    input.btn.btn-default(type="submit", value="Create")
