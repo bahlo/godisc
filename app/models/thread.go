@@ -11,6 +11,5 @@ type Thread struct {
   Topic          string
 
   // Transient
-  Thread         *Thread
   User           *User
 }
