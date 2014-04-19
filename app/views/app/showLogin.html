@@ -1,10 +1,10 @@
 {{set . "title" "Home"}}
 {{template "header.html" .}}
 
-{{if .errors}}Username or password wrong{{end}}
+{{.flash.error}}
 
-<form method="POST" action="/login">
-  <input type="text" placeholder="Name" name="username">
+<form method="POST" action="{{url "App.Login"}}">
+  <input type="text" placeholder="Name" name="username" value="{{.flash.username}}">
   <input type="password" placeholder="Password" name="password">
   <input type="submit" value="Login">
 </form>

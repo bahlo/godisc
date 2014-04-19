@@ -3,7 +3,6 @@ package controllers
 import (
   "code.google.com/p/go.crypto/bcrypt"
   "github.com/revel/revel"
-  "godisc/app/routes"
   "godisc/app/models"
 )
 
@@ -15,7 +14,7 @@ type App struct {
 // Index
 func (c App) Index() revel.Result {
   // TODO: Redirect to index if logged in
-  return c.Redirect(routes.App.ShowLogin())
+  return c.Redirect(App.ShowLogin)
 }
 
 // Show login form
@@ -50,14 +49,15 @@ func (c App) Login(username, password string) revel.Result {
       c.Session["user"] = username
       c.Session.SetDefaultExpiration()
 
-      c.Flash.Success("Welcome, " + username)
-      return c.Redirect(routes.Threads.Index())
+      return c.Redirect(Threads.Index)
     }
   }
 
+  // Set flash cookie
   c.Flash.Out["username"] = username
   c.Flash.Error("Login failed")
-  return c.Redirect(routes.App.Index())
+
+  return c.Redirect(App.ShowLogin)
 }
 
 func (c App) Logout() revel.Result {
@@ -65,7 +65,7 @@ func (c App) Logout() revel.Result {
     delete(c.Session, k)
   }
 
-  return c.Redirect(routes.App.Index())
+  return c.Redirect(App.Index)
 }
 
 func (c App) connected() *models.User {
