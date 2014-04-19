@@ -7,6 +7,7 @@ module:godisc
 GET     /                                       App.Index
 GET     /login                                  App.ShowLogin
 POST    /login                                  App.DoLogin
+GET     /threads                                Threads.Index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
