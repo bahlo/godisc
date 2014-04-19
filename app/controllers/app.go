@@ -7,11 +7,13 @@ import (
 
 type App struct {
   *revel.Controller
+  GorpController
 }
 
 // Index
 func (c App) Index() revel.Result {
   // TODO: Redirect to index if logged in
+  // c.Txn.Ping()
   return c.Redirect(routes.App.ShowLogin())
 }
 

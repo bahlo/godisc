@@ -1,6 +1,7 @@
 package controllers
 
 import (
+  "fmt"
   "database/sql"
   "github.com/coopernurse/gorp"
   _ "github.com/go-sql-driver/mysql"
@@ -29,7 +30,10 @@ func InitDB() {
   t = Dbm.AddTable(models.Thread{}).SetKeys(true, "ThreadId")
   t.ColMap("User").Transient = true
 
-  Dbm.CreateTables()
+  Dbm.TraceOn("[gorp]", revel.INFO)
+  Dbm.CreateTablesIfNotExists()
+
+  fmt.Println("finished InitDB()")
 }
 
 type GorpController struct {
