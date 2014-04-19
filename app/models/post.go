@@ -1,7 +1,6 @@
 package models
 
 import (
-  "github.com/revel/revel"
   "time"
 )
 
@@ -10,9 +9,9 @@ type Post struct {
   ThreadId       int
   UserId         int
   Body           string
+  CreatedAt      time.Time
 
   // Transient
-  Post           *Post
   Thread         *Thread
   User           *User
 }
