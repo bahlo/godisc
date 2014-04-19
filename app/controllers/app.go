@@ -40,7 +40,7 @@ func (c App) getUser(username string) *models.User {
   return users[0].(*models.User)
 }
 
-func (c App) DoLogin(username, password string) revel.Result {
+func (c App) Login(username, password string) revel.Result {
   user := c.getUser(username)
 
   if user != nil {
@@ -57,6 +57,14 @@ func (c App) DoLogin(username, password string) revel.Result {
 
   c.Flash.Out["username"] = username
   c.Flash.Error("Login failed")
+  return c.Redirect(routes.App.Index())
+}
+
+func (c App) Logout() revel.Result {
+  for k := range c.Session {
+    delete(c.Session, k)
+  }
+
   return c.Redirect(routes.App.Index())
 }
 
