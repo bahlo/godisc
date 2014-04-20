@@ -12,6 +12,7 @@ GET     /threads                                Threads.Index
 GET     /threads/new                            Threads.ShowNew
 POST    /threads/new                            Threads.New
 GET     /threads/:id                            Threads.Show
+POST    /threads/:id/post                       Threads.Post
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

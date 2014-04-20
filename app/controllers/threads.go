@@ -99,3 +99,29 @@ func (c Threads) Show(id int) revel.Result {
 
   return c.Render(thread)
 }
+
+func (c Threads) Post(id int, body string) revel.Result {
+  if len(body) > 0 {
+    thread := c.getThread(id)
+    user := c.connected()
+    if thread != nil && user != nil {
+      post := &models.Post{
+        0,
+        thread.ThreadId,
+        user.UserId,
+        body,
+        time.Now().Unix(),
+        thread,
+        user,
+      }
+
+      err := c.Txn.Insert(post)
+      if err != nil {
+        c.Flash.Error("An error occurred, sorry")
+        fmt.Println(err)
+      }
+    }
+  }
+
+  return c.Redirect(Threads.Index)
+}

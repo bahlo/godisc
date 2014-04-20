@@ -4,5 +4,19 @@
 {{.flash.error}}
 
 <h1>{{.thread.Topic}}</h1>
+{{if not .posts}}
+<p>No posts yet</p>
+{{else}}
+  {{range .posts}}
+    <div>
+      <p>{{.Body}}</p>
+    </div>
+  {{end}}
+{{end}}
+
+<form method="POST" action="/threads/{{.thread.ThreadId}}/post">
+  <textarea name="body" placeholder="Your message"></textarea>
+  <input type="submit" value="Post">
+</form>
 
 {{template "footer.html" .}}
