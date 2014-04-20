@@ -73,7 +73,7 @@ func (c Threads) New(topic string) revel.Result {
     fmt.Println(err)
   }
 
-  return c.Redirect(Threads.ShowNew)
+  return c.Redirect(Threads.Index)
 }
 
 func (c Threads) getThread(id int) *models.Thread {
