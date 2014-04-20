@@ -23,8 +23,8 @@ func (c App) ShowLogin() revel.Result {
 }
 
 func (c App) getUser(username string) *models.User {
-  users, err := c.Txn.Select(models.User{},
-    `SELECT * FROM User WHERE Name = ?`, username)
+  users, err := c.Txn.Select(models.User{}, `
+    SELECT * FROM User WHERE Name = ?`, username)
 
   if err != nil {
     // TODO: User not found message

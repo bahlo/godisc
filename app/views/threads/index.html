@@ -2,6 +2,9 @@
 {{template "header.html" .}}
 
 <h1>Welcome!</h1>
-<a href="/logout">Logout</a>
+<ul>
+  <li><a href="{{url "Threads.ShowNew"}}">New thread</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
 
 {{template "footer.html" .}}
