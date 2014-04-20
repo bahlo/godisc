@@ -11,6 +11,7 @@ GET     /logout                                 App.Logout
 GET     /threads                                Threads.Index
 GET     /threads/new                            Threads.ShowNew
 POST    /threads/new                            Threads.New
+GET     /threads/:id                            Threads.Show
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

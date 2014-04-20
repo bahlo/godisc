@@ -7,4 +7,16 @@
   <li><a href="/logout">Logout</a></li>
 </ul>
 
+<h2>Threads</h2>
+{{if not .threads}}
+<p>No threads found</p>
+{{else}}
+  <ul>
+  {{range .threads}}
+    <li><a href="/threads/{{.ThreadId}}">{{.Topic}}</a></li>
+  {{end}}
+  </ul>
+{{end}}
+
+
 {{template "footer.html" .}}

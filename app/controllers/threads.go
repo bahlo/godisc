@@ -26,7 +26,20 @@ func (c Threads) checkUser() revel.Result {
 
 // Index shows all threads
 func (c Threads) Index() revel.Result {
-  return c.Render()
+  results, err := c.Txn.Select(models.Thread{},
+    `SELECT * FROM Thread`)
+  if err != nil {
+    // TODO: Catch it
+    panic(err)
+  }
+
+  var threads []*models.Thread
+  for _, r := range results {
+    t := r.(*models.Thread)
+    threads = append(threads, t)
+  }
+
+  return c.Render(threads)
 }
 
 // ShowNew shows the form for new threads
@@ -49,9 +62,9 @@ func (c Threads) New(topic string) revel.Result {
   // Create thread
   thread := &models.Thread{
     0,
-    0,
+    0, // TODO: Fix this: c.connected().UserId,
     topic,
-    time.Now(),
+    time.Now().Unix(),
     nil,
   }
   err := c.Txn.Insert(thread)
@@ -61,4 +74,28 @@ func (c Threads) New(topic string) revel.Result {
   }
 
   return c.Redirect(Threads.ShowNew)
+}
+
+func (c Threads) getThread(id int) *models.Thread {
+  threads, err := c.Txn.Select(models.Thread{},
+    `SELECT * FROM Thread WHERE ThreadId = ?`, id)
+  // TODO: Get posts
+
+  if err != nil {
+    // TODO: User not found message
+    panic(err)
+  }
+
+  // No user found
+  if len(threads) == 0 {
+    return nil
+  }
+
+  return threads[0].(*models.Thread)
+}
+
+func (c Threads) Show(id int) revel.Result {
+  thread := c.getThread(id)
+
+  return c.Render(thread)
 }
