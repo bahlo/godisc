@@ -11,7 +11,6 @@ import (
 type Threads struct {
   App
   *revel.Controller
-  GorpController
 }
 
 func (c Threads) checkUser() revel.Result {
@@ -60,12 +59,13 @@ func (c Threads) New(topic string) revel.Result {
   }
 
   // Create thread
+  user := c.connected()
   thread := &models.Thread{
     0,
-    0, // TODO: Fix this: c.connected().UserId,
+    user.UserId,
     topic,
     time.Now().Unix(),
-    nil,
+    user,
   }
   err := c.Txn.Insert(thread)
   if err != nil {
@@ -94,10 +94,31 @@ func (c Threads) getThread(id int) *models.Thread {
   return threads[0].(*models.Thread)
 }
 
+func (c Threads) getPosts(threadId int) []*models.Post {
+  posts, err := c.Txn.Select(models.Post{},
+    `SELECT * FROM Post WHERE ThreadId = ?`, threadId)
+
+  if err != nil {
+    panic(err)
+  }
+
+  if len(posts) == 0 {
+    return nil
+  }
+
+  tc := []*models.Post{}
+  for _, post := range posts {
+    tc = append(tc, post.(*models.Post))
+  }
+
+  return tc
+}
+
 func (c Threads) Show(id int) revel.Result {
   thread := c.getThread(id)
+  posts := c.getPosts(id)
 
-  return c.Render(thread)
+  return c.Render(thread, posts)
 }
 
 func (c Threads) Post(id int, body string) revel.Result {
