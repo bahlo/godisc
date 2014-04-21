@@ -73,7 +73,7 @@ func (c Threads) New(topic string) revel.Result {
     fmt.Println(err)
   }
 
-  return c.Redirect(Threads.Index)
+  return c.Redirect("/threads/%d", thread.ThreadId)
 }
 
 func (c Threads) getThread(id int) *models.Thread {
@@ -142,7 +142,9 @@ func (c Threads) Post(id int, body string) revel.Result {
         fmt.Println(err)
       }
     }
+
+    return c.Redirect("/threads/%d", thread.ThreadId)
   }
 
-  return c.Redirect(Threads.Index)
+  return c.Todo()
 }
