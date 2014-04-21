@@ -9,7 +9,7 @@
 {{else}}
   {{range .posts}}
     <div>
-      <p>{{.Body}}</p>
+      <p><strong>{{.User.Name}}</strong>{{.Body}}</p>
     </div>
   {{end}}
 {{end}}
