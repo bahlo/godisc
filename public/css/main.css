@@ -21,9 +21,10 @@ h6 {
   margin-bottom: 0.4em;
 }
 
-input, textarea {
+input,
+textarea,
+.text-field {
   padding: 8px;
-  display: block;
   font: inherit;
   font-size: 1rem;
   border: 1px solid rgba(0, 0, 0, .05);
@@ -31,7 +32,8 @@ input, textarea {
   outline: none;
 }
   input:focus,
-  textarea:focus {
+  textarea:focus,
+  .text-field {
     background: #fff;
   }
 

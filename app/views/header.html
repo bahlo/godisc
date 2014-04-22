@@ -8,8 +8,9 @@
     {{range .moreStyles}}
       <link rel="stylesheet" href="/public/{{.}}">
     {{end}}
+    <script src="/public/vendor/requirejs/require.js" data-main="/public/js/main"></script>
     {{range .moreScripts}}
-      <script src="/public/{{.}}" charset="utf-8"></script>
+      <script src="/public/{{.}}"></script>
     {{end}}
   </head>
   <body>

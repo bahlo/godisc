@@ -12,17 +12,18 @@
   {{$mine := eq .User.UserId $userId}}
   <div class="post{{if $mine}} mine{{end}}">
     <p>
-      <strong>{{if $mine}}You{{else}}{{.User.Name}}{{end}}</strong> 
+      <strong>{{if $mine}}You{{else}}{{.User.Name}}{{end}}</strong>
       wrote at {{formatDate .Created}}:</p>
-    <p class="body">{{raw .Body}}</p>
+    <div class="body">{{raw .Body}}</div>
   </div>
 {{else}}
   <p>No posts yet, create one!</p>
 {{end}}
 
 <div class="new clearfix">
+  <div class="scribe text-field"></div>
   <form method="POST" action="/threads/{{.thread.ThreadId}}/post">
-    <textarea name="body" placeholder="Your message"></textarea>
+    <textarea name="body" placeholder="Your message" class="scribe-html" hidden></textarea>
     <input type="submit" value="Post" class="button pull-right">
   </form>
 </div>
