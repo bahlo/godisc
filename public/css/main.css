@@ -1,5 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|PT+Serif+Caption);
+
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: 13px;
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'PT Serif', serif;
 }
