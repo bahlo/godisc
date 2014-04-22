@@ -4,21 +4,25 @@
 
 {{.flash.error}}
 
-<h1>{{.thread.Topic}}</h1>
-<h3>From {{.thread.User.Name}}</h3>
+<h1>{{.thread.Topic}}
+  <span> {{.thread.User.Name}} on {{.thread.Created}}</span>
+</h1>
 {{if not .posts}}
 <p>No posts yet</p>
 {{else}}
   {{range .posts}}
-    <div>
-      <p><strong>{{.User.Name}}</strong>{{raw .Body}}</p>
+    <div class="post">
+      <p><strong>{{.User.Name}}</strong> wrote:</p>
+      <p>{{raw .Body}}</p>
     </div>
   {{end}}
 {{end}}
 
-<form method="POST" action="/threads/{{.thread.ThreadId}}/post">
-  <textarea name="body" placeholder="Your message"></textarea>
-  <input type="submit" value="Post" class="button">
-</form>
+<div class="new clearfix">
+  <form method="POST" action="/threads/{{.thread.ThreadId}}/post">
+    <textarea name="body" placeholder="Your message"></textarea>
+    <input type="submit" value="Post" class="button pull-right">
+  </form>
+</div>
 
 {{template "footer.html" .}}

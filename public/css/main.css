@@ -4,11 +4,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   font-family: 'PT Sans', sans-serif;
   font-size: 13px;
-  box-sizing: boder-box;
   background: #eee;
 }
 
@@ -87,6 +87,7 @@ header nav {
   float: right;
   background: #111;
   color: #fff;
+  margin: 26px 0;
 }
   header nav li {
     font-size: 1rem;
@@ -151,5 +152,24 @@ footer {
   }
   .threads .thread-list h2 span {
     color: #999;
+    font-size: 1rem;
+  }
+
+.thread {}
+  .thread h1 span {
+    color: #999;
+    font-size: 1rem;
+  }
+  .thread .new {
+    width: 256px;
+    margin: 0 auto;
+  }
+    .thread .new textarea {
+      width: 100%;
+    }
+    .thread .new .button {
+      margin-top: 8px;
+    }
+  .thread .post {
     font-size: 1rem;
   }
