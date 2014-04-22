@@ -7,15 +7,13 @@
 <h1>{{.thread.Topic}}
   <span> {{.thread.User.Name}} on {{formatDate .thread.Created}}</span>
 </h1>
-{{if not .posts}}
-<p>No posts yet</p>
+{{range .posts}}
+  <div class="post{{if eq .User.UserId 2}} mine{{end}}">
+    <p><strong>{{.User.Name}}</strong> wrote at {{formatDate .Created}}:</p>
+    <p class="body">{{raw .Body}}</p>
+  </div>
 {{else}}
-  {{range .posts}}
-    <div class="post">
-      <p><strong>{{.User.Name}}</strong> wrote:</p>
-      <p>{{raw .Body}}</p>
-    </div>
-  {{end}}
+  <p>No posts yet, create one!</p>
 {{end}}
 
 <div class="new clearfix">

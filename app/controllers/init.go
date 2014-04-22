@@ -17,6 +17,7 @@ func init() {
   revel.TemplateFuncs["eqo"] = func(a, b, c interface{}) bool {
     return a == b || a == c
   }
+
   revel.TemplateFuncs["formatDate"] = func(t time.Time) string {
     if format, ok := revel.Config.String("date.format"); ok {
       return t.Format(format)

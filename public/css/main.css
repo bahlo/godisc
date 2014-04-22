@@ -151,16 +151,18 @@ footer {
   .threads .thread-list h2 span {
     color: #999;
     font-size: 1rem;
+    font-weight: normal;
   }
 
 .thread {}
   .thread h1 span {
     color: #999;
     font-size: 1rem;
+    font-weight: normal;
   }
   .thread .new {
-    width: 256px;
-    margin: 0 auto;
+    width: 480px;
+    margin: 16px auto 0;
   }
     .thread .new textarea {
       width: 100%;
@@ -171,4 +173,13 @@ footer {
     }
   .thread .post {
     font-size: 1rem;
+    margin-bottom: 12px;
   }
+    .thread .post.mine {
+      margin-left: 320px;
+    }
+    .thread .post .body {
+      background: #eee;
+      max-width: 640px;
+      padding: 8px;
+    }

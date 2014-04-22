@@ -19,39 +19,39 @@ type Post struct {
   Created        interface{}
 }
 
-func (b Post) String() string {
-  return fmt.Sprintf("Post(%s)", b.User)
+func (p Post) String() string {
+  return fmt.Sprintf("Post(%s)", p.User)
 }
 
-func (b *Post) PreInsert(_ gorp.SqlExecutor) error {
-  b.ThreadId = b.Thread.ThreadId
-  b.UserId = b.User.UserId
+func (p *Post) PreInsert(_ gorp.SqlExecutor) error {
+  p.ThreadId = p.Thread.ThreadId
+  p.UserId = p.User.UserId
 
-  b.CreatedString = b.Created.(time.Time).Format(SQL_DATE_FORMAT)
+  p.CreatedString = p.Created.(time.Time).Format(SQL_DATE_FORMAT)
 
   return nil
 }
 
-func (b *Post) PostGet(exe gorp.SqlExecutor) error {
+func (p *Post) PostGet(exe gorp.SqlExecutor) error {
   var (
     obj interface{}
     err error
   )
 
-  obj, err = exe.Get(User{}, b.UserId)
+  obj, err = exe.Get(User{}, p.UserId)
   if err != nil {
-    return fmt.Errorf("failed loading a posts's user (%d): %s", b.UserId, err)
+    return fmt.Errorf("failed loading a posts's user (%d): %s", p.UserId, err)
   }
-  b.User = obj.(*User)
+  p.User = obj.(*User)
 
-  obj, err = exe.Get(Thread{}, b.ThreadId)
+  obj, err = exe.Get(Thread{}, p.ThreadId)
   if err != nil {
-    return fmt.Errorf("failed loading a posts's thread (%d): %s", b.ThreadId, err)
+    return fmt.Errorf("failed loading a posts's thread (%d): %s", p.ThreadId, err)
   }
-  b.Thread = obj.(*Thread)
+  p.Thread = obj.(*Thread)
 
-  if b.Created, err = time.Parse(SQL_DATE_FORMAT, b.CreatedString); err != nil {
-    return fmt.Errorf("failed parsing check in date '%s':", b.CreatedString, err)
+  if p.Created, err = time.Parse(SQL_DATE_FORMAT, p.CreatedString); err != nil {
+    return fmt.Errorf("failed parsing check in date '%s':", p.CreatedString, err)
   }
 
   return nil
