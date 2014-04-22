@@ -9,10 +9,20 @@ type Settings struct {
   *revel.Controller
 }
 
-func (s Settings) Index() revel.Result {
-  return s.Render()
+func (c Settings) Index() revel.Result {
+  return c.Render()
 }
 
-func (s Settings) Save(username string) revel.Result {
-  return s.Redirect(s.Index)
+func (c Settings) Save(name string) revel.Result {
+
+  if user := c.connected(); len(name) > 0 && user != nil {
+    user.Name = name
+
+    c.Session["user"] = name
+    c.Session.SetDefaultExpiration()
+
+    c.Txn.Update(user)
+  }
+
+  return c.Redirect(Settings.Index)
 }
