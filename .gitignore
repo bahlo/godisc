@@ -1,3 +1,7 @@
+# Revel
 test-results/
 tmp/
 routes/
+
+# Bower
+public/vendor

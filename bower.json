@@ -1,0 +1,7 @@
+{
+  "name": "godisc",
+  "dependencies": {
+    "scribe": "~0.1.6",
+    "requirejs": "~2.1.11"
+  }
+}
