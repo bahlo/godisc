@@ -1,9 +1,14 @@
-@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|PT+Serif+Caption);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic);
 
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+}
 body {
   font-family: 'PT Sans', sans-serif;
   font-size: 13px;
-  margin: 0;
+  box-sizing: boder-box;
 }
 
 h1,
@@ -11,6 +16,42 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: 'PT Serif', serif;
+h6 {}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
+
+/* Header */
+header {
+  width: 100%;
+  background: rgb(0, 106, 220);
+  color: #fff;
+}
+  header a {
+    color: #fff;
+    text-decoration: none;
+  }
+    header a:hover {
+      background: rgba(0, 0, 0, .5);
+    }
+  header h1 {
+    float: left;
+    padding: 6px 0;
+  }
+    header h1 a {
+      padding: 8px;
+    }
+  header nav {
+    float: right;
+  }
+    header nav li {
+      float: left;
+      list-style: none;
+      padding: 12px 0;
+    }
+    header nav a {
+      padding: 16px;
+    }
