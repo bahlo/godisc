@@ -1,0 +1,10 @@
+<nav>
+  <ul>
+    {{if .user}}
+      <li><a href="/threads">Threads</a></li>
+      <li><a href="/threads/new">New thread</a></li>
+      <li><a href="/logout">Logout</a></li>
+    {{else}}
+    {{end}}
+  </ul>
+</nav>

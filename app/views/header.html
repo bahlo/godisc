@@ -2,25 +2,18 @@
 <html>
   <head>
     <title>{{.title}}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/public/img/favicon.png">
+    <link rel="stylesheet" href="/public/css/main.css">
     {{range .moreStyles}}
-      <link rel="stylesheet" type="text/css" href="/public/{{.}}">
+      <link rel="stylesheet" href="/public/{{.}}">
     {{end}}
     {{range .moreScripts}}
-      <script src="/public/{{.}}" type="text/javascript" charset="utf-8"></script>
+      <script src="/public/{{.}}" charset="utf-8"></script>
     {{end}}
   </head>
   <body>
     <header>
       <h1>Godisc</h1>
-      <nav>
-        <ul>
-          {{if .user}}
-            <li><a href="/threads/new">New thread</a></li>
-            <li><a href="/logout">Logout</a></li>
-          {{else}}
-          {{end}}
-        </ul>
-      </nav>
+      {{template "navigation.html" .}}
     </header>
