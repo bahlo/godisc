@@ -55,10 +55,14 @@
     <button class="button dark" data-command-name="redo">
       <i class="fa fa-repeat"></i>
     </button>
+    <button class="button dark" id="select-image">
+      <i class="fa fa-picture-o"></i>
+    </button>
   </div>
   <div class="scribe text-field"></div>
   <form method="POST" action="/threads/{{.thread.ThreadId}}/post">
     <textarea name="body" placeholder="Your message" class="scribe-html" hidden></textarea>
+    <input type="file" name="picture" class="upload-light" hidden>
     <input type="submit" value="Post" class="button pull-right">
   </form>
 </div>
