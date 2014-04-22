@@ -63,8 +63,8 @@ header {
     color: #fff;
     text-decoration: none;
   }
-    header a:hover {
-      background: #001F3F;
+    header a:hover, header a.active {
+      background: rgba(0, 0, 0, .4);
     }
   header h1 {
     float: left;

@@ -1,8 +1,8 @@
 <nav>
   <ul class="clearfix">
     {{if .user}}
-      <li><a href="/threads">Threads</a></li>
-      <li><a href="/threads/new">New thread</a></li>
+      <li><a href="/threads" {{if eqo .class "threads" "thread"}}class="active"{{end}}>Threads</a></li>
+      <li><a href="/threads/new" {{if eq .class "new-thread"}}class="active"{{end}}>New thread</a></li>
       <li><a href="/logout">Logout</a></li>
     {{else}}
     {{end}}

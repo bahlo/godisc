@@ -9,4 +9,8 @@ func init() {
   revel.InterceptMethod(Threads.checkUser, revel.BEFORE)
   revel.InterceptMethod((*GorpController).Commit, revel.AFTER)
   revel.InterceptMethod((*GorpController).Rollback, revel.PANIC)
+
+  revel.TemplateFuncs["eqo"] = func(a, b, c interface{}) bool {
+    return a == b || a == c
+  }
 }

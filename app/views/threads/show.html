@@ -1,4 +1,5 @@
 {{set . "title" "Thread"}}
+{{set . "class" "thread"}}
 {{template "header.html" .}}
 
 {{.flash.error}}
@@ -10,7 +11,7 @@
 {{else}}
   {{range .posts}}
     <div>
-      <p><strong>{{.User.Name}}</strong>{{.Body}}</p>
+      <p><strong>{{.User.Name}}</strong>{{raw .Body}}</p>
     </div>
   {{end}}
 {{end}}
