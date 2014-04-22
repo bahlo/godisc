@@ -132,9 +132,10 @@ func (c Threads) Post(id int, body string) revel.Result {
         thread.ThreadId,
         user.UserId,
         body,
-        time.Now().Unix(),
+        "",
         thread,
         user,
+        time.Now(),
       }
 
       err := c.Txn.Insert(post)

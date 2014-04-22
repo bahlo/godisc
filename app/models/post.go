@@ -2,6 +2,7 @@ package models
 
 import (
   "fmt"
+  "time"
   "github.com/coopernurse/gorp"
 )
 
@@ -10,11 +11,12 @@ type Post struct {
   ThreadId       int
   UserId         int
   Body           string
-  CreatedAt      int64
+  CreatedString  string
 
   // Transient
   Thread         *Thread
   User           *User
+  Created        interface{}
 }
 
 func (b Post) String() string {
@@ -24,6 +26,8 @@ func (b Post) String() string {
 func (b *Post) PreInsert(_ gorp.SqlExecutor) error {
   b.ThreadId = b.Thread.ThreadId
   b.UserId = b.User.UserId
+
+  b.CreatedString = b.Created.(time.Time).Format(SQL_DATE_FORMAT)
 
   return nil
 }
@@ -45,6 +49,10 @@ func (b *Post) PostGet(exe gorp.SqlExecutor) error {
     return fmt.Errorf("failed loading a posts's thread (%d): %s", b.ThreadId, err)
   }
   b.Thread = obj.(*Thread)
+
+  if b.Created, err = time.Parse(SQL_DATE_FORMAT, b.CreatedString); err != nil {
+    return fmt.Errorf("failed parsing check in date '%s':", b.CreatedString, err)
+  }
 
   return nil
 }
