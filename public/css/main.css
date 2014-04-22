@@ -35,15 +35,16 @@ input, textarea {
   }
 
 .button {
-  background: #516D86;
+  background: #FF851B;
   border: none;
   color: white;
   cursor: pointer;
   display: inline-block;
+  padding: 9px; /* 1px more than input to compensate missing border */
 }
   .button:hover,
   .button:focus {
-    background: #334453;
+    background: #FFA352;
   }
 
 .clearfix:after {
@@ -51,6 +52,9 @@ input, textarea {
   display: table;
   clear: both;
 }
+
+.pull-left { float: left; }
+.pull-right { float: right; }
 
 /* Header */
 header {
