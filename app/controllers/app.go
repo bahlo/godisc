@@ -22,6 +22,13 @@ func (c App) ShowLogin() revel.Result {
   return c.Render()
 }
 
+func (c App) AddUser() revel.Result {
+  if user := c.connected(); user != nil {
+    c.RenderArgs["user"] = user
+  }
+  return nil
+}
+
 func (c App) getUser(username string) *models.User {
   users, err := c.Txn.Select(models.User{},
     `SELECT * FROM User WHERE Name = ?`, username)

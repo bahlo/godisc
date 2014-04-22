@@ -12,3 +12,15 @@
     {{end}}
   </head>
   <body>
+    <header>
+      <h1>Godisc</h1>
+      <nav>
+        <ul>
+          {{if .user}}
+            <li><a href="/threads/new">New thread</a></li>
+            <li><a href="/logout">Logout</a></li>
+          {{else}}
+          {{end}}
+        </ul>
+      </nav>
+    </header>
