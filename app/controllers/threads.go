@@ -62,10 +62,11 @@ func (c Threads) New(topic string) revel.Result {
   user := c.connected()
   thread := &models.Thread{
     0,
-    user.UserId,
+    0,
     topic,
-    time.Now().Unix(),
+    "",
     user,
+    time.Now(),
   }
   err := c.Txn.Insert(thread)
   if err != nil {
