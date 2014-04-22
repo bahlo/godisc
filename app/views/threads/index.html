@@ -10,8 +10,10 @@
   <ul class="thread-list">
   {{range .threads}}
     <li>
-      <h2><a href="/threads/{{.ThreadId}}">{{.Topic}}</a></h2>
-      <span>{{.CreatedAt}}</span>
+      <h2>
+        <a href="/threads/{{.ThreadId}}">{{.Topic}}</a>
+        <span> {{.User.Name}} on {{.CreatedAt}}</span>
+      </h2>
     </li>
   {{end}}
   </ul>

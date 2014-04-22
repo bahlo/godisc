@@ -58,12 +58,14 @@ input, textarea {
 .pull-right { float: right; }
 
 .page {
-  width: 640px;
+  background: #fff;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd
+}
+
+main {
+  max-width: 960px;
   margin: 0 auto;
-  background: white;
-  padding: 0 16px 16px;
-  border: 1px solid #ddd;
-  border-top: 0;
 }
 
 /* Header */
@@ -85,7 +87,6 @@ header nav {
   float: right;
   background: #111;
   color: #fff;
-  margin-top: 26px;
 }
   header nav li {
     font-size: 1rem;
@@ -96,6 +97,7 @@ header nav {
   header nav a {
     padding: 12px;
     color: #fff;
+    margin-right: -1px;
   }
     header nav a:hover,
     header nav a.active {
@@ -110,11 +112,10 @@ header nav {
       }
 
 footer {
-  width: 640px;
-  margin: 16px auto;
   text-align: center;
   color: #bbb;
   font-size: 0.8rem;
+  padding: 32px 0;
 }
   footer a {
     color: inherit;
@@ -144,6 +145,11 @@ footer {
   .threads .thread-list li {
     list-style: none;
   }
-  .threads .thread-list a {
-
+  .threads .thread-list h2 a {
+    color: #333;
+    text-decoration: none;
+  }
+  .threads .thread-list h2 span {
+    color: #999;
+    font-size: 1rem;
   }
