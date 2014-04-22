@@ -32,6 +32,14 @@ func (s SortThreads) Less(i, j int) bool {
   return s[i].Created.(time.Time).Unix() > s[j].Created.(time.Time).Unix()
 }
 
+// Set up sorting for Posts
+type SortPosts []*models.Post
+func (s SortPosts) Len() int           { return len(s) }
+func (s SortPosts) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s SortPosts) Less(i, j int) bool {
+  return s[i].Created.(time.Time).Unix() > s[j].Created.(time.Time).Unix()
+}
+
 // Index shows all threads
 func (c Threads) Index() revel.Result {
   results, err := c.Txn.Select(models.Thread{},
@@ -128,6 +136,8 @@ func (c Threads) getPosts(threadId int) []*models.Post {
 func (c Threads) Show(id int) revel.Result {
   thread := c.getThread(id)
   posts := c.getPosts(id)
+
+  sort.Sort(SortPosts(posts))
 
   return c.Render(thread, posts)
 }
