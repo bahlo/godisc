@@ -20,7 +20,7 @@ h6 {
   margin-bottom: 0.4em;
 }
 
-input {
+input, textarea {
   padding: 8px;
   display: block;
   font: inherit;
@@ -29,7 +29,8 @@ input {
   background: rgba(0, 0, 0, .01);
   outline: none;
 }
-  input:focus {
+  input:focus,
+  textarea:focus {
     background: #fff;
   }
 
