@@ -7,9 +7,13 @@
 <h1>{{.thread.Topic}}
   <span> {{.thread.User.Name}} on {{formatDate .thread.Created}}</span>
 </h1>
+{{$userId := .user.UserId}}
 {{range .posts}}
-  <div class="post{{if eq .User.UserId 2}} mine{{end}}">
-    <p><strong>{{.User.Name}}</strong> wrote at {{formatDate .Created}}:</p>
+  {{$mine := eq .User.UserId $userId}}
+  <div class="post{{if $mine}} mine{{end}}">
+    <p>
+      <strong>{{if $mine}}You{{else}}{{.User.Name}}{{end}}</strong> 
+      wrote at {{formatDate .Created}}:</p>
     <p class="body">{{raw .Body}}</p>
   </div>
 {{else}}
