@@ -110,7 +110,6 @@ header nav {
   header nav a {
     padding: 12px;
     color: #fff;
-    margin-right: -1px;
   }
     header nav a:hover,
     header nav a.active {
@@ -212,4 +211,16 @@ footer {
   .thread .scribe blockquote {
     margin: 8px 0 8px 22px;
     color: #333;
+  }
+
+/* Settings */
+.settings {}
+  .settings .button {
+    clear: both;
+    margin-top: 12px;
+    display: block;
+  }
+  .settings label {
+    font-size: 1rem;
+    margin-right: .5rem;
   }

@@ -2,7 +2,6 @@ package controllers
 
 import (
   "github.com/revel/revel"
-  // "godisc/app/models"
 )
 
 type Settings struct {
@@ -10,9 +9,10 @@ type Settings struct {
   *revel.Controller
 }
 
-func (c Settings) Index() revel.Result {
-  if user := c.connected(); user == nil {
-    return c.Redirect(App.ShowLogin)
-  }
-  return c.Render()
+func (s Settings) Index() revel.Result {
+  return s.Render()
+}
+
+func (s Settings) Save(username string) revel.Result {
+  return s.Redirect(s.Index)
 }

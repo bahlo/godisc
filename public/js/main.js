@@ -100,10 +100,11 @@ require({
     scribe.use(scribePluginFormatterPlainTextConvertNewLinesToHtml())
 
     // Configure upload-light
-    new UploadLight(document.querySelector('.upload-light'),
-                    document.querySelector('#select-image'),
-                    {
-                      max: 1
+    new UploadLight(
+      document.querySelector('.upload-light'),
+      document.querySelector('#select-image'),
+      {
+        max: 1
     }).on('load', function(message) {
       // Stop spinning
       var parsed = JSON.parse(message);
