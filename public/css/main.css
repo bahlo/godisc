@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|PT+Serif);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Serif);
 
 /* General */
 * {
@@ -33,7 +33,7 @@ textarea,
 }
   input:focus,
   textarea:focus,
-  .text-field {
+  .text-field:focus {
     background: #fff;
   }
 
@@ -46,9 +46,19 @@ textarea,
   padding: 9px; /* 1px more than input to compensate missing border */
 }
   .button:hover,
-  .button:focus {
+  .button:focus,
+  .button.active {
     background: #FFA352;
   }
+  .button.dark {
+    background: #111;
+    color: #fff;
+  }
+    .button.dark:hover,
+    .button.dark:focus,
+    .button.dark.active {
+      background: #333;
+    }
 
 .clearfix:after {
   content: "";
@@ -166,13 +176,20 @@ footer {
     width: 480px;
     margin: 16px auto 0;
   }
-    .thread .new textarea {
-      width: 100%;
-      resize: none;
-    }
     .thread .new .button {
       margin-top: 8px;
     }
+    .thread .scribe {
+      min-height: 64px;
+      border-top: none;
+    }
+    .thread .scribe-toolbar {
+      background: #111;
+    }
+      .thread .scribe-toolbar .button {
+        margin-top: 0;
+        margin-right: -3px;
+      }
   .thread .post {
     font-size: 1rem;
     margin-bottom: 12px;

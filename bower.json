@@ -13,6 +13,7 @@
     "scribe-plugin-smart-lists": "~0.1.0",
     "scribe-plugin-toolbar": "~0.1.1",
     "requirejs": "~2.1.11",
-    "upload-light": "~0.1.0"
+    "upload-light": "~0.1.0",
+    "font-awesome": "~4.0.3"
   }
 }
