@@ -7,9 +7,12 @@
 {{if not .threads}}
 <p>No threads found</p>
 {{else}}
-  <ul>
+  <ul class="thread-list">
   {{range .threads}}
-    <li><a href="/threads/{{.ThreadId}}">{{.Topic}}</a></li>
+    <li>
+      <h2><a href="/threads/{{.ThreadId}}">{{.Topic}}</a></h2>
+      <span>{{.CreatedAt}}</span>
+    </li>
   {{end}}
   </ul>
 {{end}}

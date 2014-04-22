@@ -31,6 +31,15 @@ func (c App) AddUser() revel.Result {
   if user := c.connected(); user != nil {
     c.RenderArgs["user"] = user
   }
+
+  return nil
+}
+
+func (c App) AddConfig() revel.Result {
+  if name, ok := revel.Config.String("app.name"); ok {
+    c.RenderArgs["name"] = name
+  }
+
   return nil
 }
 

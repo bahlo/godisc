@@ -9,6 +9,7 @@ body {
   font-family: 'PT Sans', sans-serif;
   font-size: 13px;
   box-sizing: boder-box;
+  background: #eee;
 }
 
 h1,
@@ -56,57 +57,71 @@ input, textarea {
 .pull-left { float: left; }
 .pull-right { float: right; }
 
-/* Header */
-header {
-  width: 960px;
+.page {
+  width: 640px;
   margin: 0 auto;
+  background: white;
+  padding: 0 16px 16px;
+  border: 1px solid #ddd;
+  border-top: 0;
 }
-  header a {
-    text-decoration: none;
+
+/* Header */
+header a {
+  text-decoration: none;
+}
+header h1 {
+  float: left;
+  padding: 6px 0;
+  margin: 0;
+  font-size: 4rem;
+  font-family: 'PT Serif' serif;
+}
+  header h1 a {
+    color: #111;
+    padding: 8px;
   }
-  header h1 {
+header nav {
+  float: right;
+  background: #111;
+  color: #fff;
+  margin-top: 26px;
+}
+  header nav li {
+    font-size: 1rem;
     float: left;
-    padding: 6px 0;
-    margin: 0;
-    font-size: 4rem;
-    font-family: 'PT Serif' serif;
+    list-style: none;
+    padding: 11px 0;
   }
-    header h1 a {
-      color: #111;
-      padding: 8px;
-    }
-  header nav {
-    float: right;
-    background: #111;
+  header nav a {
+    padding: 12px;
     color: #fff;
   }
-    header nav li {
-      font-size: 1rem;
-      float: left;
-      list-style: none;
-      padding: 11px 0;
+    header nav a:hover,
+    header nav a.active {
+      background: #333;
     }
-    header nav a {
-      padding: 12px;
-      color: #fff;
+    header nav a.add {
+      background: #FF851B;
     }
-      header nav a:hover,
-      header nav a.active {
-        background: #333;
+      header nav a.add:hover,
+      header nav a.add.active {
+        background: #FFA352;
       }
-      header nav a.add {
-        background: #FF851B;
-      }
-        header nav a.add:hover,
-        header nav a.add.active {
-          background: #FFA352;
-        }
 
-/* Main */
-main {
-  width: 960px;
+footer {
+  width: 640px;
   margin: 16px auto;
+  text-align: center;
+  color: #bbb;
+  font-size: 0.8rem;
 }
+  footer a {
+    color: inherit;
+  }
+    footer a:hover {
+      text-decoration: none;
+    }
 
 /* Login page */
 .login form {
@@ -120,4 +135,15 @@ main {
   }
   .login form .button {
     width: 100%;
+  }
+
+/* Thread index */
+.threads {
+
+}
+  .threads .thread-list li {
+    list-style: none;
+  }
+  .threads .thread-list a {
+
   }

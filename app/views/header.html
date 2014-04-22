@@ -13,8 +13,9 @@
     {{end}}
   </head>
   <body>
-    <header class="clearfix">
-      <h1><a href="/">Godisc</a></h1>
-      {{template "navigation.html" .}}
-    </header>
-    <main class="{{.class}}">
+    <div class="page">
+      <header class="clearfix">
+        <h1><a href="/">{{.name}}</a></h1>
+        {{template "navigation.html" .}}
+      </header>
+      <main class="{{.class}}">
