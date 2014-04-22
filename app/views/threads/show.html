@@ -5,7 +5,7 @@
 {{.flash.error}}
 
 <h1>{{.thread.Topic}}
-  <span> {{.thread.User.Name}} on {{.thread.Created}}</span>
+  <span> {{.thread.User.Name}} on {{formatDate .thread.Created}}</span>
 </h1>
 {{if not .posts}}
 <p>No posts yet</p>

@@ -17,10 +17,7 @@ type Thread struct {
   Created         interface{}
 }
 
-const (
-  DATE_FORMAT     = "02. 01. 2006 15:04:05"
-  SQL_DATE_FORMAT = "2006-01-02 15:04:05"
-)
+const SQL_DATE_FORMAT = "2006-01-02 15:04:05"
 
 func (b Thread) String() string {
   return fmt.Sprintf("Thread(%s)", b.User)

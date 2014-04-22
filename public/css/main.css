@@ -140,9 +140,7 @@ footer {
   }
 
 /* Thread index */
-.threads {
-
-}
+.threads {}
   .threads .thread-list li {
     list-style: none;
   }
@@ -166,6 +164,7 @@ footer {
   }
     .thread .new textarea {
       width: 100%;
+      resize: none;
     }
     .thread .new .button {
       margin-top: 8px;

@@ -1,6 +1,9 @@
 package controllers
 
-import "github.com/revel/revel"
+import (
+  "time"
+  "github.com/revel/revel"
+)
 
 func init() {
   revel.OnAppStart(InitDB)
@@ -13,5 +16,12 @@ func init() {
 
   revel.TemplateFuncs["eqo"] = func(a, b, c interface{}) bool {
     return a == b || a == c
+  }
+  revel.TemplateFuncs["formatDate"] = func(t time.Time) string {
+    if format, ok := revel.Config.String("date.format"); ok {
+      return t.Format(format)
+    }
+
+    return "2006-01-02 15:04:05"
   }
 }
