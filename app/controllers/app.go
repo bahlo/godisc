@@ -13,12 +13,17 @@ type App struct {
 
 // Index
 func (c App) Index() revel.Result {
-  // TODO: Redirect to index if logged in
+  if user := c.connected(); user != nil {
+    return c.Redirect("/threads")
+  }
   return c.Redirect(App.ShowLogin)
 }
 
 // Show login form
 func (c App) ShowLogin() revel.Result {
+  if user := c.connected(); user != nil {
+    return c.Redirect("/threads")
+  }
   return c.Render()
 }
 
