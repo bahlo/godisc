@@ -202,3 +202,14 @@ footer {
       max-width: 640px;
       padding: 8px;
     }
+  .thread .post ul,
+  .thread .scribe ul,
+  .thread .post ol,
+  .thread .scribe ol {
+    margin-left: 22px;
+  }
+  .thread .post blockquote,
+  .thread .scribe blockquote {
+    margin: 8px 0 8px 22px;
+    color: #333;
+  }
