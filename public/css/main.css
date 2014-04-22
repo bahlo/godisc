@@ -16,7 +16,34 @@ h2,
 h3,
 h4,
 h5,
-h6 {}
+h6 {
+  margin-bottom: 0.4em;
+}
+
+input {
+  padding: 8px;
+  display: block;
+  font: inherit;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, .05);
+  background: rgba(0, 0, 0, .01);
+  outline: none;
+}
+  input:focus {
+    background: #fff;
+  }
+
+.button {
+  background: #516D86;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+}
+  .button:hover,
+  .button:focus {
+    background: #334453;
+  }
 
 .clearfix:after {
   content: "";
@@ -28,7 +55,7 @@ h6 {}
 header {
   width: 960px;
   margin: 0 auto;
-  background: rgb(0, 106, 220);
+  background: #0074D9;
   color: #fff;
 }
   header a {
@@ -36,11 +63,12 @@ header {
     text-decoration: none;
   }
     header a:hover {
-      background: rgba(0, 0, 0, .5);
+      background: #001F3F;
     }
   header h1 {
     float: left;
     padding: 6px 0;
+    margin: 0;
   }
     header h1 a {
       padding: 8px;
@@ -60,5 +88,19 @@ header {
 /* Main */
 main {
   width: 960px;
-  margin: 0 auto;
+  margin: 16px auto;
 }
+
+/* Login page */
+.login form {
+  max-width: 192px;
+}
+  .login form input:not(.button) {
+    width: 100%;
+  }
+  .login form .password {
+    border-top: 0;
+  }
+  .login form .button {
+    width: 100%;
+  }
