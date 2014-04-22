@@ -3,6 +3,7 @@ package controllers
 import (
   "fmt"
   "time"
+  "sort"
   "github.com/revel/revel"
   "godisc/app/routes"
   "godisc/app/models"
@@ -23,6 +24,14 @@ func (c Threads) checkUser() revel.Result {
   return nil
 }
 
+// Set up sorting for threads
+type SortThreads []*models.Thread
+func (s SortThreads) Len() int           { return len(s) }
+func (s SortThreads) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s SortThreads) Less(i, j int) bool {
+  return s[i].Created.(time.Time).Unix() > s[j].Created.(time.Time).Unix()
+}
+
 // Index shows all threads
 func (c Threads) Index() revel.Result {
   results, err := c.Txn.Select(models.Thread{},
@@ -38,6 +47,7 @@ func (c Threads) Index() revel.Result {
     threads = append(threads, t)
   }
 
+  sort.Sort(SortThreads(threads))
   return c.Render(threads)
 }
 
