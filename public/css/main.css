@@ -26,7 +26,8 @@ h6 {}
 
 /* Header */
 header {
-  width: 100%;
+  width: 960px;
+  margin: 0 auto;
   background: rgb(0, 106, 220);
   color: #fff;
 }
@@ -55,3 +56,9 @@ header {
     header nav a {
       padding: 16px;
     }
+
+/* Main */
+main {
+  width: 960px;
+  margin: 0 auto;
+}
