@@ -213,6 +213,13 @@ footer {
     margin: 8px 0 8px 22px;
     color: #333;
   }
+  .thread .post a {
+    color: #FF851B;
+    text-decoration: none;
+  }
+    .thread .post a:hover {
+      color: #333;
+    }
 
 /* Settings */
 .settings {}
