@@ -170,3 +170,17 @@ func (c Threads) Post(id int, body string) revel.Result {
 
   return c.Todo()
 }
+
+func (c Threads) DeletePost(id, postId int) revel.Result {
+  // Find post
+  post, _ := c.Txn.Get(models.Post{}, postId)
+  fmt.Println(post)
+  _, err := c.Txn.Delete(post)
+
+  if err != nil {
+    c.Flash.Error("An error occurred, sorry")
+    fmt.Println(err)
+  }
+
+  return c.Redirect("/threads/%d", id)
+}

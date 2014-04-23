@@ -13,6 +13,7 @@ GET     /threads/new                            Threads.ShowNew
 POST    /threads/new                            Threads.New
 GET     /threads/:id                            Threads.Show
 POST    /threads/:id/post                       Threads.Post
+GET     /threads/:id/post/:postId/delete        Threads.DeletePost
 GET     /settings                               Settings.Index
 
 # Ignore favicon requests

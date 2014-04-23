@@ -11,9 +11,15 @@
 {{range .posts}}
   {{$mine := eq .User.UserId $userId}}
   <div class="post{{if $mine}} mine{{end}}">
-    <p>
+    <p class="clearfix">
       <strong>{{if $mine}}You{{else}}{{.User.Name}}{{end}}</strong>
-      wrote at {{formatDate .Created}}:</p>
+      wrote at {{formatDate .Created}}:
+      <span class="pull-right">
+        <a href="/threads/{{.ThreadId}}/post/{{.PostId}}/delete">
+          <i class="fa fa-times"></i>
+        </a>
+      </span>
+    </p>
     <div class="body">{{raw .Body}}</div>
   </div>
 {{else}}
