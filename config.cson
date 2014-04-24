@@ -1,5 +1,0 @@
-{
-  title: 'nodisc'
-  registration: true
-  dbUrl: 'mongodb://localhost/nodisc'
-}
