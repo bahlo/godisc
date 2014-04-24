@@ -30,6 +30,7 @@ textarea,
   border: 1px solid rgba(0, 0, 0, .05);
   background: rgba(0, 0, 0, .01);
   outline: none;
+  -webkit-appearance: none;
 }
   input:focus,
   textarea:focus,
@@ -44,6 +45,7 @@ textarea,
   cursor: pointer;
   display: inline-block;
   padding: 9px; /* 1px more than input to compensate missing border */
+  -webkit-appearance: none;
 }
   .button:hover,
   .button:focus,
