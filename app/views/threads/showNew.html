@@ -1,0 +1,14 @@
+{{set . "title" "New Thread"}}
+{{set . "class" "new-thread"}}
+{{template "header.html" .}}
+
+<h1>New thread</h1>
+
+{{.flash.error}}
+
+<form method="POST" action="{{url "Threads.New"}}" class="clearfix">
+  <input type="text" placeholder="Topic" name="topic" value="{{.flash.topic}}" class="pull-left">
+  <input type="submit" value="Create" class="button pull-left">
+</form>
+
+{{template "footer.html" .}}

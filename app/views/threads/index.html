@@ -1,0 +1,23 @@
+{{set . "title" "Threads"}}
+{{set . "class" "threads"}}
+{{template "header.html" .}}
+
+<h1>Threads</h1>
+
+{{if not .threads}}
+<p>No threads found</p>
+{{else}}
+  <ul class="thread-list">
+  {{range .threads}}
+    <li>
+      <h2>
+        <a href="/threads/{{.ThreadId}}">{{.Topic}}</a>
+        <span> {{.User.Name}} on {{formatDate .Created}}</span>
+      </h2>
+    </li>
+  {{end}}
+  </ul>
+{{end}}
+
+
+{{template "footer.html" .}}

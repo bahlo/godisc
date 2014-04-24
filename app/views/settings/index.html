@@ -1,0 +1,13 @@
+{{set . "title" "Settings"}}
+{{set . "class" "settings"}}
+{{template "header.html" .}}
+
+<h1>Settings</h1>
+
+<form method="POST" action="{{url "Settings.Save"}}" class="clearfix">
+  <label for="name">Name: </label>
+  <input  id="name" type="text" placeholder="Name" name="name" value="{{.user.Name}}">
+  <input type="submit" value="Save" class="button">
+</form>
+
+{{template "footer.html" .}}

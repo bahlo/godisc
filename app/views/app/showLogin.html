@@ -1,0 +1,14 @@
+{{set . "title" "Home"}}
+{{set . "class" "login"}}
+{{template "header.html" .}}
+
+{{.flash.error}}
+
+<h1>Login</h1>
+<form method="POST" action="{{url "App.Login"}}">
+  <input type="text" placeholder="Name" name="username" value="{{.flash.username}}" class="username">
+  <input type="password" placeholder="Password" name="password" class="password">
+  <input type="submit" value="Login" class="button">
+</form>
+
+{{template "footer.html" .}}

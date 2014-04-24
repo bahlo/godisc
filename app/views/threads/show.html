@@ -1,0 +1,78 @@
+{{set . "title" "Thread"}}
+{{set . "class" "thread"}}
+{{template "header.html" .}}
+
+{{.flash.error}}
+
+<h1>{{.thread.Topic}}
+  <span> {{.thread.User.Name}} on {{formatDate .thread.Created}}</span>
+</h1>
+{{$userId := .user.UserId}}
+{{range .posts}}
+  {{$mine := eq .User.UserId $userId}}
+  <div class="post{{if $mine}} mine{{end}}">
+    <p class="clearfix">
+      <strong>{{if $mine}}You{{else}}{{.User.Name}}{{end}}</strong>
+      wrote at {{formatDate .Created}}:
+      {{if $mine}}
+        <span class="pull-right">
+          <a href="/threads/{{.ThreadId}}/post/{{.PostId}}/delete">
+            <i class="fa fa-times"></i>
+          </a>
+        </span>
+      {{end}}
+    </p>
+    <div class="body">{{raw .Body}}</div>
+  </div>
+{{else}}
+  <p>No posts yet, create one!</p>
+{{end}}
+
+<div class="new clearfix">
+  <div class="scribe-toolbar">
+    <button class="button dark" data-command-name="bold">
+      <i class="fa fa-bold"></i>
+    </button>
+    <button class="button dark" data-command-name="italic">
+      <i class="fa fa-italic"></i>
+    </button>
+    <!-- <button class="button dark" data-command-name="strikeThrough">
+      <i class="fa fa-strikethrough"></i>
+    </button> -->
+    <button class="button dark" data-command-name="removeFormat">
+      <i class="fa fa-eraser"></i>
+    </button>
+    <button class="button dark" data-command-name="linkPrompt">
+      <i class="fa fa-link"></i>
+    </button>
+    <button class="button dark" data-command-name="unlink">
+      <i class="fa fa-unlink"></i>
+    </button>
+    <button class="button dark" data-command-name="insertOrderedList">
+      <i class="fa fa-list-ol"></i>
+    </button>
+    <button class="button dark" data-command-name="insertUnorderedList">
+      <i class="fa fa-list-ul"></i>
+    </button>
+    <button class="button dark" data-command-name="blockquote">
+      <i class="fa fa-quote-right"></i>
+    </button>
+    <button class="button dark" data-command-name="undo">
+      <i class="fa fa-undo"></i>
+    </button>
+    <button class="button dark" data-command-name="redo">
+      <i class="fa fa-repeat"></i>
+    </button>
+    <button class="button dark" id="select-image">
+      <i class="fa fa-picture-o"></i>
+    </button>
+  </div>
+  <div class="scribe text-field"></div>
+  <form method="POST" action="/threads/{{.thread.ThreadId}}/post">
+    <textarea name="body" placeholder="Your message" class="scribe-html" hidden></textarea>
+    <input type="file" name="picture" class="upload-light" hidden>
+    <input type="submit" value="Post" class="button pull-right">
+  </form>
+</div>
+
+{{template "footer.html" .}}

@@ -1,0 +1,234 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Serif);
+
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 13px;
+  background: #eee;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.4em;
+}
+
+input,
+textarea,
+.text-field {
+  padding: 8px;
+  font: inherit;
+  font-size: 1rem;
+  border: 1px solid rgba(0, 0, 0, .05);
+  background: rgba(0, 0, 0, .01);
+  outline: none;
+}
+  input:focus,
+  textarea:focus,
+  .text-field:focus {
+    background: #fff;
+  }
+
+.button {
+  background: #FF851B;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  padding: 9px; /* 1px more than input to compensate missing border */
+}
+  .button:hover,
+  .button:focus,
+  .button.active {
+    background: #FFA352;
+  }
+  .button.dark {
+    background: #111;
+    color: #fff;
+  }
+    .button.dark:hover,
+    .button.dark:focus,
+    .button.dark.active {
+      background: #333;
+    }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.pull-left { float: left; }
+.pull-right { float: right; }
+
+.page {
+  background: #fff;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Header */
+header a {
+  text-decoration: none;
+}
+header h1 {
+  float: left;
+  padding: 6px 0;
+  margin: 0;
+  font-size: 4rem;
+  font-family: 'PT Serif' serif;
+}
+  header h1 a {
+    color: #111;
+    padding: 8px;
+  }
+header nav {
+  float: right;
+  background: #111;
+  color: #fff;
+  margin: 26px 0;
+}
+  header nav li {
+    font-size: 1rem;
+    float: left;
+    list-style: none;
+    padding: 11px 0;
+  }
+  header nav a {
+    padding: 12px;
+    color: #fff;
+  }
+    header nav a:hover,
+    header nav a.active {
+      background: #333;
+    }
+    header nav a.add {
+      background: #FF851B;
+    }
+      header nav a.add:hover,
+      header nav a.add.active {
+        background: #FFA352;
+      }
+
+footer {
+  text-align: center;
+  color: #bbb;
+  font-size: 0.8rem;
+  padding: 32px 0;
+}
+  footer a {
+    color: inherit;
+  }
+    footer a:hover {
+      text-decoration: none;
+    }
+
+/* Login page */
+.login form {
+  max-width: 192px;
+}
+  .login form input:not(.button) {
+    width: 100%;
+  }
+  .login form .password {
+    border-top: 0;
+  }
+  .login form .button {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+/* Thread index */
+.threads {}
+  .threads .thread-list li {
+    list-style: none;
+  }
+  .threads .thread-list h2 a {
+    color: #333;
+    text-decoration: none;
+  }
+  .threads .thread-list h2 span {
+    color: #999;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+.thread {}
+  .thread h1 span {
+    color: #999;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  .thread .new {
+    width: 480px;
+    margin: 16px auto 0;
+  }
+    .thread .new .button {
+      margin-top: 8px;
+    }
+    .thread .scribe {
+      min-height: 64px;
+      border-top: none;
+    }
+    .thread .scribe-toolbar {
+      background: #111;
+    }
+      .thread .scribe-toolbar .button {
+        margin-top: 0;
+        margin-right: -3px;
+      }
+  .thread .post {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+    .thread .post.mine {
+      margin-left: 320px;
+    }
+    .thread .post .body {
+      background: #eee;
+      max-width: 640px;
+      padding: 8px;
+    }
+  .thread .post ul,
+  .thread .scribe ul,
+  .thread .post ol,
+  .thread .scribe ol {
+    margin-left: 22px;
+  }
+  .thread .post blockquote,
+  .thread .scribe blockquote {
+    margin: 8px 0 8px 22px;
+    color: #333;
+  }
+  .thread .post a {
+    color: #FF851B;
+    text-decoration: none;
+  }
+    .thread .post a:hover {
+      color: #333;
+    }
+
+/* Settings */
+.settings {}
+  .settings .button {
+    clear: both;
+    margin-top: 12px;
+    display: block;
+  }
+  .settings label {
+    font-size: 1rem;
+    margin-right: .5rem;
+  }

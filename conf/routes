@@ -1,0 +1,26 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+module:godisc
+
+GET     /                                       App.Index
+GET     /login                                  App.ShowLogin
+POST    /login                                  App.Login
+GET     /logout                                 App.Logout
+GET     /threads                                Threads.Index
+GET     /threads/new                            Threads.ShowNew
+POST    /threads/new                            Threads.New
+GET     /threads/:id                            Threads.Show
+POST    /threads/:id/post                       Threads.Post
+GET     /threads/:id/post/:postId/delete        Threads.DeletePost
+GET     /settings                               Settings.Index
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/*filepath                       Static.Serve("public")
+
+# Catch all
+*       /:controller/:action                    :controller.:action
