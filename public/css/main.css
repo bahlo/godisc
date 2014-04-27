@@ -71,6 +71,11 @@ textarea,
 .pull-left { float: left; }
 .pull-right { float: right; }
 
+.flash {}
+  .flash.error {
+    margin-bottom: 8px;
+  }
+
 .page {
   background: #fff;
   padding-bottom: 16px;

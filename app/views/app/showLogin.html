@@ -2,7 +2,9 @@
 {{set . "class" "login"}}
 {{template "header.html" .}}
 
-{{.flash.error}}
+{{if .flash.error}}
+<div class="flash error">{{.flash.error}}</div>
+{{end}}
 
 <h1>Login</h1>
 <form method="POST" action="{{url "App.Login"}}">

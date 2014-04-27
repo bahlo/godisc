@@ -76,7 +76,7 @@ func (c App) Login(username, password string) revel.Result {
 
   // Set flash cookie
   c.Flash.Out["username"] = username
-  c.Flash.Error("Login failed")
+  c.Flash.Error("Login failed, wrong Username or Password combination")
 
   return c.Redirect(App.ShowLogin)
 }
