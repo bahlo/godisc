@@ -135,8 +135,13 @@ func (c Threads) getPosts(threadId int) []*models.Post {
 
 func (c Threads) Show(id int) revel.Result {
   thread := c.getThread(id)
-  posts := c.getPosts(id)
 
+  if thread == nil {
+    return c.NotFound("Thread not found, sorry")
+  }
+
+  // Get posts
+  posts := c.getPosts(id)
   sort.Sort(SortPosts(posts))
 
   return c.Render(thread, posts)

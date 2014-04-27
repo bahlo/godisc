@@ -2,8 +2,6 @@
 {{set . "class" "thread"}}
 {{template "header.html" .}}
 
-{{.flash.error}}
-
 <h1>{{.thread.Topic}}
   <span> {{.thread.User.Name}} on {{formatDate .thread.Created}}</span>
 </h1>

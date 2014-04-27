@@ -2,10 +2,6 @@
 {{set . "class" "login"}}
 {{template "header.html" .}}
 
-{{if .flash.error}}
-<div class="flash error">{{.flash.error}}</div>
-{{end}}
-
 <h1>Login</h1>
 <form method="POST" action="{{url "App.Login"}}">
   <input type="text" placeholder="Name" name="username" value="{{.flash.username}}" class="username">
